@@ -33,5 +33,49 @@ GLStateTracker.setTrackerMethods(
   function(args) { this.saveState(WebGLRenderingContext.VIEWPORT, args)}, 
   function(viewport) {this.gl.viewport(...viewport)}
 )
-
+GLStateTracker.setTrackerMethods(
+  WebGLRenderingContext.ACTIVE_TEXTURE,
+  "activeTexture",
+  function(args) { this.saveState(WebGLRenderingContext.ACTIVE_TEXTURE, args) },
+  function(activeTexture) { this.gl.activeTexture(...activeTexture)} 
+) 
+GLStateTracker.setTrackerMethods(
+  WebGLRenderingContext.CURRENT_PROGRAM, 
+  "useProgram", 
+  function(args) { this.saveState(WebGLRenderingContext.CURRENT_PROGRAM, args) }, 
+  function(program) { this.gl.useProgram(...program) }
+)
+GLStateTracker.setTrackerMethods(
+  "GENERIC_ENABLE", 
+  "enable",
+  function(args) { 
+    if (!this.stateMap.has("GENERIC")) {this.stateMap.set("GENERIC", new Map())}
+    if (this.tracking) {this.stateMap.get("GENERIC").set(...args, true)}
+  },
+  function(state) {
+    let genericMap = this.stateMap.get("GENERIC")
+    if (genericMap) {
+      genericMap.keys().forEach(key => { 
+        if (genericMap.get(key)) {this.gl.enable(key)}
+      })
+    }
+  }
+)
+GLStateTracker.setTrackerMethods(
+"GENERIC_DISABLE",
+"disable",
+function(args) {
+  if (!this.stateMap.has("GENERIC")) {this.stateMap.set("GENERIC", new Map()}
+  if (this.tracking) {this.stateMap.get("GENERIC").set(...args, false)}
+},
+function(state) {
+  let genericMap = this.stateMap.get("GENERIC")
+  if (genericMap) {
+    genericMap.keys().forEach(key => {
+      if (!genericMap.get(key)) {this.gl.disable(key)}
+    })
+  }
+}
+)
+  
 ////test 
