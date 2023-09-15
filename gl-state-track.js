@@ -22,7 +22,7 @@ class GLStateTracker {
   saveState(glStateName, glState) {
     if (this.tracking) {this.stateMap.set(glStateName, glState) }
   }
-  restoreState(glStateName) { GLStateTracker.glStateToRestoreMethodTable[glStateName].call(this, this.stateMap.get(glStateName)) }
+  restoreState(glStateName) { GLStateTracker.glStateNameToRestoreMethodTable[glStateName].call(this, this.stateMap.get(glStateName)) }
   startTracking() {this.tracking = true}
   stopTracking() {this.tracking = false}
   restore() {
