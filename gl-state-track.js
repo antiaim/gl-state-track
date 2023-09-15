@@ -27,7 +27,7 @@ class GLStateTracker {
   startTracking() {this.tracking = true}
   stopTracking() {this.tracking = false}
   restore() {
-    this.stateNameList.forEach(stateName => this.restoreState(stateName))
+    this.stateNameList.filter(stateName => this.stateMap.has(stateName)).forEach(stateName => this.restoreState(stateName))
   }
 }
 
