@@ -5,8 +5,8 @@ function proxyGlMethod(tracker, glMethodName, proxyMethod) {
       return Reflect.apply(...arguments)
     }
   })
-}
-
+}                        
+             
 class GLStateTracker {     
   static glStateNameToGlMethodNameTable = {}
   static glStateNameToSaveMethodTable = {}
