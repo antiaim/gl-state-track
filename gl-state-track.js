@@ -15,6 +15,7 @@ class GLStateTracker {
   constructor(gl, stateNameList) {
     this.gl = gl
     this.stateMap = new Map()
+    this.stateNames = this.stateNameList
     for (let stateName of stateNameList) {
       proxyGlMethod(this, GLStateTracker.glStateNameToGlMethodNameTable[stateName], GLStateTracker.glStateNameToSaveMethodTable[stateName])
     }
@@ -26,7 +27,7 @@ class GLStateTracker {
   startTracking() {this.tracking = true}
   stopTracking() {this.tracking = false}
   restore() {
-    [...this.stateMap.keys()].forEach(stateName => this.restoreState(stateName))
+    this.stateNameList.forEach(stateName => this.restoreState(stateName))
   }
 }
 
