@@ -11,7 +11,7 @@ class GLStateTracker {
   static glStateNameToGlMethodNameTable = {}
   static glStateNameToSaveMethodTable = {}
   static glStateNameToRestoreMethodTable = {}
-  static setTrackerMethods(glStateName, glMethodName, saveMethod, restoreMethod) { GLStateTracker.glStateNameToGlMethodNameTable[glStateName] = glMethodName; GLStateTracker.glStateNameToSaveMethodTable[glStateName] = saveMethod; GLStateTracker.glStateToRestoreMethodTable[glStateName] = restoreMethod } 
+  static setTrackerMethods(glStateName, glMethodName, saveMethod, restoreMethod) { GLStateTracker.glStateNameToGlMethodNameTable[glStateName] = glMethodName; GLStateTracker.glStateNameToSaveMethodTable[glStateName] = saveMethod; GLStateTracker.glStateNameToRestoreMethodTable[glStateName] = restoreMethod } 
   constructor(gl, stateNameList) {
     this.gl = gl
     this.stateMap = new Map()
