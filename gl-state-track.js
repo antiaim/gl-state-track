@@ -79,7 +79,7 @@ function(state) {
     })
   }
 }
-)
+);
   
 ////test 
    
