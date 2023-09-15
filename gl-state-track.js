@@ -16,7 +16,7 @@ class GLStateTracker {
     this.gl = gl
     this.stateMap = new Map()
     for (let stateName of stateNameList) {
-      proxyGlMethod(this, GLStateTracker.glStateNameToGlMethodNameTable[stateName], GLStateTracker.glStateToSaveMethodTable[stateName])
+      proxyGlMethod(this, GLStateTracker.glStateNameToGlMethodNameTable[stateName], GLStateTracker.glStateNameToSaveMethodTable[stateName])
     }
   }
   saveState(glStateName, glState) {
