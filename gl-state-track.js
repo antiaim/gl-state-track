@@ -1,6 +1,6 @@
 function proxyGlMethod(tracker, glMethodName, proxyMethod) {
   tracker.gl[glMethodName] = new Proxy(tracker.gl[glMethodName], {  
-    apply: function(target, thisArg, argumentsList) 
+    apply: function(target, thisArg, argumentsList) {
       proxyMethod.call(tracker, argumentsList)
       return Reflect.apply(...arguments)
     }
