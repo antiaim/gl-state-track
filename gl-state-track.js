@@ -50,8 +50,8 @@ GLStateTracker.setTrackerMethods(
   function(program) { this.gl.useProgram(...program) }
 )
 GLStateTracker.setTrackerMethods(
-  "BLEND_FUNC_SEPARATE",
-  "blendFuncSeparate",
+  "BLEND_FUNC",
+  "blendFunc",
   function(args) { this.saveState("BLEND_FUNC_SEPARATE", args) },
   function(args) { this.gl.blendFuncSeparate(...args) }
 )
