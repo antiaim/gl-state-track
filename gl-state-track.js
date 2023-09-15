@@ -26,7 +26,7 @@ class GLStateTracker {
   startTracking() {this.tracking = true}
   stopTracking() {this.tracking = false}
   restore() {
-    this.stateMap.keys().forEach(stateName => this.restoreState(stateName))
+    [...this.stateMap.keys()].forEach(stateName => this.restoreState(stateName))
   }
 }
 
@@ -64,7 +64,7 @@ GLStateTracker.setTrackerMethods(
   function(state) {
     let genericMap = this.stateMap.get("GENERIC")
     if (genericMap) {
-      genericMap.keys().forEach(key => { 
+      [...genericMap.keys()].forEach(key => { 
         if (genericMap.get(key)) {this.gl.enable(key)}
       })
     }
@@ -80,7 +80,7 @@ function(args) {
 function(state) {
   let genericMap = this.stateMap.get("GENERIC")
   if (genericMap) {
-    genericMap.keys().forEach(key => {
+    [...genericMap].keys().forEach(key => {
       if (!genericMap.get(key)) {this.gl.disable(key)}
     })
   }
