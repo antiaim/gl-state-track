@@ -68,7 +68,7 @@ GLStateTracker.setTrackerMethods(
 "GENERIC_DISABLE",
 "disable",
 function(args) {
-  if (!this.stateMap.has("GENERIC")) {this.stateMap.set("GENERIC", new Map()}
+  if (!this.stateMap.has("GENERIC")) {this.stateMap.set("GENERIC", new Map())}
   if (this.tracking) {this.stateMap.get("GENERIC").set(...args, false)}
 },
 function(state) {
